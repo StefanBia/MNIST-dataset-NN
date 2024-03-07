@@ -98,5 +98,5 @@ fit(model, train_images, train_labels, epochs=10, batch_size=128)
 predictions = model(test_images)
 predictions = predictions.numpy()
 predicted_labels = np.argmax(predictions, axis=1)
-matches = predictions == test_labels
+matches = predicted_labels == test_labels
 print(f"Accuracy: {matches.mean():.2f}")
