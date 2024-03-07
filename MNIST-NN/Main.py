@@ -1,5 +1,5 @@
 import tensorflow as tf
-import numpy
+import numpy as np
 import math
 
 class NaiveDense:
@@ -93,3 +93,10 @@ test_images = test_images.reshape((10000, 28 * 28))
 test_images = test_images.astype('float32') / 255
 
 fit(model, train_images, train_labels, epochs=10, batch_size=128)
+
+
+predictions = model(test_images)
+predictions = predictions.numpy()
+predicted_labels = np.argmax(predictions, axis=1)
+matches = predictions == test_labels
+print(f"Accuracy: {matches.mean():.2f}")
